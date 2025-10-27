@@ -27,7 +27,7 @@ const Dashboard = () => {
 
   const handleFormSubmit = (formData) => {
     if (selectedContact) {
-      updateContact(selectedContact.id, formData);
+      updateContact(selectedContact._id, formData);
     } else {
       addContact(formData);
     }
@@ -70,7 +70,7 @@ const Dashboard = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {filteredContacts.map((contact) => (
               <ContactCard
-                key={contact.id}
+                key={contact._id}
                 contact={contact}
                 onEdit={handleEdit}
                 onDelete={handleDelete}
@@ -92,7 +92,7 @@ const Dashboard = () => {
         onClose={() => setIsDeleteDialogOpen(false)}
         onConfirm={() => {
           if (contactToDelete) {
-            deleteContact(contactToDelete.id); // Delete the contact
+            deleteContact(contactToDelete._id); // Delete the contact
           }
         }}
         contact={contactToDelete}

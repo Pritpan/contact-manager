@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api/contacts';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080/api/contacts';
 
 export const getAllContacts = async (params) => {
   try {
@@ -32,9 +32,11 @@ export const createContact = async (contactData) => {
   }
 };
 
-export const updateContact = async (id, contactData) => {
+export const updateContactService = async (id, contactData) => {
   try {
+    console.log('Updating Contact:', id, contactData); // Debugging
     const response = await axios.put(`${API_URL}/${id}`, contactData);
+    console.log('Update Response:', response.data); // Debugging
     return response.data;
   } catch (error) {
     console.error('Error updating contact:', error);
@@ -42,9 +44,11 @@ export const updateContact = async (id, contactData) => {
   }
 };
 
-export const deleteContact = async (id) => {
+export const deleteContactService = async (id) => {
   try {
+    console.log('Deleting Contact:', id); // Debugging
     const response = await axios.delete(`${API_URL}/${id}`);
+    console.log('Delete Response:', response.data); // Debugging
     return response.data;
   } catch (error) {
     console.error('Error deleting contact:', error);
