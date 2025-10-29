@@ -2,8 +2,8 @@ import { createContext, useContext, useState, useEffect, useMemo } from 'react';
 import {
   getAllContacts,
   createContact,
-  updateContactService,
-  deleteContactService,
+  updateContact as updateContactService,
+  deleteContact as deleteContactService,
 } from '../services/contactService';
 
 const ContactContext = createContext();

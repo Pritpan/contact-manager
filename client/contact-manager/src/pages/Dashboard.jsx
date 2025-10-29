@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Plus } from 'lucide-react';
 import { useContacts } from '../context/ContactContext';
+import Navbar from '../components/Navbar';
 import SearchBar from '../components/SearchBar';
 import TagFilter from '../components/TagFilter';
 import ContactCard from '../components/ContactCard';
@@ -41,21 +42,22 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <Navbar />
+      
       <div className="max-w-7xl mx-auto px-4 py-8">
-        <div className="flex items-center justify-between mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Contact Manager</h1>
+        {/* Search Bar and Add Contact Button Side by Side */}
+        <div className="flex items-center gap-4 mb-6">
+          <div className="flex-1">
+            <SearchBar />
+          </div>
           <button
             onClick={() => setIsFormOpen(true)}
-            className="flex items-center gap-2 px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 font-medium transition-colors shadow-sm"
+            className="flex items-center gap-2 px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 font-medium transition-colors shadow-sm whitespace-nowrap"
             aria-label="Add a new contact"
           >
             <Plus size={20} />
             Add Contact
           </button>
-        </div>
-
-        <div className="mb-6">
-          <SearchBar />
         </div>
 
         <div className="mb-8">
@@ -92,7 +94,7 @@ const Dashboard = () => {
         onClose={() => setIsDeleteDialogOpen(false)}
         onConfirm={() => {
           if (contactToDelete) {
-            deleteContact(contactToDelete._id); // Delete the contact
+            deleteContact(contactToDelete._id);
           }
         }}
         contact={contactToDelete}
